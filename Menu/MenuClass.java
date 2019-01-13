@@ -114,6 +114,10 @@ public class MenuClass extends JFrame implements ActionListener
             {
                 e1.printStackTrace();
             }
+            catch (ClassNotFoundException e1)
+            {
+                e1.printStackTrace();
+            }
         }
 
     }

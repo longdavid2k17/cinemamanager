@@ -1,5 +1,6 @@
 package TicketsPackage;
 
+import Menu.MenuClass;
 import AdminPackage.SQLManagmentClass;
 
 import javax.swing.*;
@@ -8,10 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+
 public class Schedule extends JFrame implements ActionListener
 {
     JFrame scheduleWindow;
-    JButton movie1Button,movie1Button2,movie1Button3;
+    JButton movie1Button,movie1Button2,movie1Button3, backButton;
     String buttonLabel,buttonLabel2, buttonLabel3;
 
     SQLManagmentClass query = new SQLManagmentClass();
@@ -59,6 +61,13 @@ public class Schedule extends JFrame implements ActionListener
         movie1Button3.setBounds(100,500,800,150);
         scheduleWindow.add(movie1Button3);
         movie1Button3.addActionListener(this);
+
+        backButton= new JButton();
+        backButton.setText("Cofnij");
+        backButton.setVisible(true);
+        backButton.setBounds(1200,800,200,125);
+        scheduleWindow.add(backButton);
+        backButton.addActionListener(this);
     }
 
     @Override
@@ -82,6 +91,12 @@ public class Schedule extends JFrame implements ActionListener
         {
             scheduleWindow.dispose();
             new ReservationProcessClass(query2.id_hall, query2.movieName,  query2.time);
+        }
+
+        else if(source==backButton)
+        {
+            scheduleWindow.dispose();
+            new MenuClass();
         }
     }
 }

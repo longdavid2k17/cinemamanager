@@ -23,7 +23,8 @@ public class AdminLoginFrame extends JFrame implements ActionListener
     String fileLogin, filePassword;
     String[] strings= new String[3];
 
-    public AdminLoginFrame() throws IOException {
+    public AdminLoginFrame() throws IOException, ClassNotFoundException
+    {
         ImageIcon appIcon = new ImageIcon("icon.png");
 
 
@@ -128,6 +129,7 @@ public class AdminLoginFrame extends JFrame implements ActionListener
 
         if(source == loginButton)
         {
+            /*
             login = loginField.getText();
             password = passwordField.getText();
 
@@ -139,6 +141,9 @@ public class AdminLoginFrame extends JFrame implements ActionListener
             {
                 e1.printStackTrace();
             }
+            */
+            LoginFrame.dispose();
+            new AdminSiteManagment();
 
         }
     }

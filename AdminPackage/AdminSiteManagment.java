@@ -8,12 +8,13 @@ import java.awt.event.ActionListener;
 public class AdminSiteManagment extends JFrame implements ActionListener
 {
     JFrame managmentWindow;
-    JButton changeHallButton, editTicketPriceButton, editScheduleButton;
+    JButton changeHallButton, backButton, editScheduleButton;
     JLabel logoLabel;
 
     AdminSiteManagment()
     {
         ImageIcon appIcon = new ImageIcon("icon.png");
+        ImageIcon imgThisImg = new ImageIcon("cinema_image.png");
 
     managmentWindow = new JFrame();
     managmentWindow.setTitle("Strona administratora");
@@ -32,19 +33,16 @@ public class AdminSiteManagment extends JFrame implements ActionListener
     managmentWindow.add(changeHallButton);
     changeHallButton.addActionListener(this);
 
-    editTicketPriceButton = new JButton("Edycja cen biletów");
-    editTicketPriceButton.setVisible(true);
-    editTicketPriceButton.setBounds(50,400,350,100);
-    managmentWindow.add(editTicketPriceButton);
-    editTicketPriceButton.addActionListener(this);
-
     editScheduleButton = new JButton("Edycja harmonogramu");
     editScheduleButton.setVisible(true);
-    editScheduleButton.setBounds(50,600,350,100);
+    editScheduleButton.setBounds(50,400,350,100);
     managmentWindow.add(editScheduleButton);
     editScheduleButton.addActionListener(this);
 
-        ImageIcon imgThisImg = new ImageIcon("cinema_image.png");
+    backButton = new JButton("Cofnij");
+    backButton.addActionListener(this);
+    backButton.setBounds(1200,900,200,50);
+    managmentWindow.add(backButton);
 
     logoLabel= new JLabel();
     logoLabel.setVisible(true);
@@ -61,17 +59,28 @@ public class AdminSiteManagment extends JFrame implements ActionListener
 
         if(source==changeHallButton)
         {
-
+            managmentWindow.dispose();
+            new EditHall();
         }
 
-        else if(source==editTicketPriceButton)
+        else if(source==backButton)
         {
-
+            managmentWindow.dispose();
         }
 
         else if(source==editScheduleButton)
         {
+            managmentWindow.dispose();
 
+            try
+            {
+                new EditSchedule();
+            }
+
+            catch (Exception e1)
+            {
+                e1.printStackTrace();
+            }
         }
 
     }

@@ -2,20 +2,17 @@ package PreviewPackage;
 
 import AdminPackage.SQLManagmentClass;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
 
 public class CinemaHalls extends JFrame
 {
     JFrame hall, moviesSchedule;
-    JLabel hallImage, scheduleLabel;
+    JLabel hallImage, scheduleLabel, timeLabel;
     int id;
     String PicURL="hall_image.jpg";
-    String movie_name;
+    String movie_name, timeOfShow;
 
     CinemaHalls(int hallID) throws Exception
     {
@@ -26,6 +23,7 @@ public class CinemaHalls extends JFrame
 
     query.getCinemaData("SELECT * FROM harmonogram WHERE sale_id="+id);
     movie_name = query.movieName;
+    timeOfShow = query.time;
 
     hall = new JFrame();
     hall.setTitle("Podgląd sali "+id);
@@ -49,10 +47,17 @@ public class CinemaHalls extends JFrame
 
     scheduleLabel = new JLabel();
     scheduleLabel.setText(movie_name);
-    scheduleLabel.setBounds(10,200,350,30);
+    scheduleLabel.setBounds(10,40,250,30);
     scheduleLabel.setVisible(true);
     scheduleLabel.setForeground(Color.white);
     moviesSchedule.add(scheduleLabel);
+
+    timeLabel = new JLabel();
+    timeLabel.setText("O godzinie: "+timeOfShow);
+    timeLabel.setBounds(10,70,250,30);
+    timeLabel.setVisible(true);
+    timeLabel.setForeground(Color.white);
+    moviesSchedule.add(timeLabel);
 
 
 
