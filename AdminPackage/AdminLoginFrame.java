@@ -129,7 +129,6 @@ public class AdminLoginFrame extends JFrame implements ActionListener
 
         if(source == loginButton)
         {
-            /*
             login = loginField.getText();
             password = passwordField.getText();
 
@@ -141,7 +140,6 @@ public class AdminLoginFrame extends JFrame implements ActionListener
             {
                 e1.printStackTrace();
             }
-            */
             LoginFrame.dispose();
             new AdminSiteManagment();
 
